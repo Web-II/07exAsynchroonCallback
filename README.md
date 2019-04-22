@@ -47,3 +47,36 @@ Select List:
 Drie vragen beantwoord:
 
 ![Quiz3.png](/docs/Quiz3.png)
+
+De landen van europa met hoofdstad en vlag staan in countries.js. 
+
+Bekijk deze code: dit is een array van JSON objecten. Elk object bevat:
+- een property name (naam van het land)
+- een property flag (url van de vlag): wordt in deze oefening niet gebruikt.
+- een property capital (hoofdstad van het land)
+
+Met een import wordt deze array toegevoegd aan quiz.js en is dan ook toegankelijk.
+
+De quiz.js bevat naast de import ook een Class Country met de gepaste getters en setters. Deze code mag niet aangepast worden.
+
+Vervolgens is er nog de klasse QuizApp. 
+- Deze bevat alle members en methods om de quiz te spelen. 
+- Alle nodige getters en setters zijn reeds aanwezig.
+- De constructor:
+    - map de array van JSON objecten naar een array van Country objecten - wordt bijgehouden in de member countriesArray.
+    - maakt een Set object aan - questionsQuiz. Via de methode createQuestions zal deze 10 verschillende landen (country objecten) bevatten. Deze landen worden random gekozen.
+    - maakt een Map object aan - answers, die de antwoorden bijhoudt (key = country object, value = antwoord)
+- de methode createQuestions zal door gebruik te maken van een promise de 10 verschillende landen random toevoegen aan questionsQuiz.
+    - indien dit succesvol gebeurt wordt de eerste vraag gesteld: methode askQuestion(q) - de parameter q is het volgnummer van de vragen.
+    - indien dit niet succesvol gebeurt, dan wordt een gepast bericht naar de console (dit mag eventueel ook via een alert of op de webpagina zelf) gestuurd en is de quiz afgelopen.
+- de methode askQuestion(q) zal:
+    - de juiste vraag (q is het volgnummer van de vraag) ophalen uit questionsQuiz
+    - deze vraag (het land) weergeven op de webpagina
+    - de selectList met 10 mogelijke hoofdsteden (de juiste hoofdstad en 9 random gekozen hoofdsteden uit countriesObject opbouwen en weergeven. Om de selectList van hoofdsteden op te bouwen wordt gebruikt gemaakt van de methode createSelectList(c), waarbij de parameter c het juiste antwoord is.
+    - vervolgens wordt bij een keuze uit de selectList van hoofdsteden (maak gebruik van het change event) 
+        - indien succesvol
+            - het antwoord bijgehouden in answers
+            - het resultaat weergegeven (methode showResult)
+            - de volgende vraaag gesteld (methode askQuestion(q+1))
+        - niet succesvol - stuur een geschikte boodschap naar de console.
+    - maak ook hier op een correcte manier gebruik van een Promise.
