@@ -100,3 +100,37 @@ Select List:
 Drie vragen beantwoord:
 
 ![Quiz6.png](/docs/Quiz6.png)
+
+## Oefening 4: Doorprik de illusie.
+
+Dit is een oefening op callback-eventhandling - storage - DOM - Canvas (alle code hiervoor is gegeven).
+
+In deze oefening gaan we een eenvoudig spelletje programmeren. De gebruiker moet in zo weinig mogelijk tijd alle rode bollen (cirkels) wegklikken. In totaal zijn er 40 bollen in 5 verschillende kleuren. Van elke kleur zijn er initieel dus evenveel bollen: 8. Iedere keer de gebruiker klikt op een rode bol, wordt deze verwijderd en worden alle resterende bollen ergens anders getekend. Er is ook een top tijd. Deze wordt bijgehouden in de storage. Alle bollen worden op een canvas getekend (de code hiervoor is gegeven).
+
+![DPDI1.png](/docs/DPDI1.png)
+
+Er zijn drie klassen gedefinieerd:
+- Circle - bevat alle eigenschappen voor een bol te tekenen (code is gegeven):
+    - x- en y-coördinaat op canvas van het middelpunt van de cirkel.
+    - straal van de cirkel.
+    - kleur van de cirkel.
+- Game:
+    - members:
+        - array van 40 cirkels.
+        - array van 5 kleuren ('red', 'lightblue', 'lightgreen', 'black', 'lightyellow').
+        - aantal seconden dat het spel loop.
+        - aantal cirkels per kleur en aantal rode cirkels, namelijk 8.
+    - de nodige getters (reeds gegeven)
+    - methods:
+        - createCircles: 
+            - maakt 40 cirkels (circleObjects) aan (8 van elke kleur).
+            - straal van cirkel heeft waarde tussen 10 en 20.
+            - x- en y-coördinaat staan oorspronkelijk op 0.
+        - checkClick(x,y):
+            - Deze methode heeft 2 parameters x en y, die de x – coördinaat en de y-coördinaat van de muisklik op het canvas voorstellen. In deze functie wordt er gecontroleerd of de gebruiker op een rode cirkel heeft geklikt. Als de gebruiker op een rode cirkel heeft geklikt, wordt deze cirkel verwijderd uit de array circles. 
+	        Overloop alle cirkels uit de array circles
+	        Als de afstand tussen het middelpunt van één rode cirkel en de coördinaten van de muisklik kleiner is dan of gelijk aan de straal, wil dit zeggen dat de gebruiker in een rode cirkel heeft geklikt. In dat geval wordt deze cirkel verwijderd uit de array circles. Maak hiervoor gebruik van de JavaScript functie splice en wordt het numberOfRedBalls met 1 verminderd.
+	        Om de afstand tussen 2 punten (x_1,y_1 ) en (x_2,y_2) te berekenen, maken we gebruik van de formule √((x_2- x_1 )* (x_2- x_1 )+ (y_2- y_1 )* (y_2- y_1 ) ) met (x_1,y_1 ) de coördinaten van de klik op het canvas en (x_2,y_2) het middelpunt van de cirkel. De code in javascript hiervoor is
+    const distance = Math.sqrt(Math.pow((this.circles[i].x - x), 2) 
+	    + Math.pow((this.circles[i].y - y), 2));
+
