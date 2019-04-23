@@ -52,7 +52,7 @@ class Game {
     }
 }
 
-class DPDIComponent {
+class DPDIApp {
     constructor(canvas, storage) {
         this._canvas = canvas;
         this._ctx = this._canvas.getContext("2d");
@@ -93,7 +93,7 @@ class DPDIComponent {
     }
     showTime() {
         
-   }
+    }
     getTimeRecordFromStorage() {
         
     }
