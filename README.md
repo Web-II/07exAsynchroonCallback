@@ -127,10 +127,47 @@ Er zijn drie klassen gedefinieerd:
             - straal van cirkel heeft waarde tussen 10 en 20.
             - x- en y-coördinaat staan oorspronkelijk op 0.
         - checkClick(x,y):
-            - Deze methode heeft 2 parameters x en y, die de x – coördinaat en de y-coördinaat van de muisklik op het canvas voorstellen. In deze functie wordt er gecontroleerd of de gebruiker op een rode cirkel heeft geklikt. Als de gebruiker op een rode cirkel heeft geklikt, wordt deze cirkel verwijderd uit de array circles. 
-	        Overloop alle cirkels uit de array circles
-	        Als de afstand tussen het middelpunt van één rode cirkel en de coördinaten van de muisklik kleiner is dan of gelijk aan de straal, wil dit zeggen dat de gebruiker in een rode cirkel heeft geklikt. In dat geval wordt deze cirkel verwijderd uit de array circles. Maak hiervoor gebruik van de JavaScript functie splice en wordt het numberOfRedBalls met 1 verminderd.
-	        Om de afstand tussen 2 punten (x_1,y_1 ) en (x_2,y_2) te berekenen, maken we gebruik van de formule √((x_2- x_1 )* (x_2- x_1 )+ (y_2- y_1 )* (y_2- y_1 ) ) met (x_1,y_1 ) de coördinaten van de klik op het canvas en (x_2,y_2) het middelpunt van de cirkel. De code in javascript hiervoor is
-    const distance = Math.sqrt(Math.pow((this.circles[i].x - x), 2) 
-	    + Math.pow((this.circles[i].y - y), 2));
+            Deze methode heeft 2 parameters x en y, die de x – coördinaat en de y-coördinaat van de muisklik op het canvas voorstellen. In deze functie wordt er gecontroleerd of de gebruiker op een rode cirkel heeft geklikt. Als de gebruiker op een rode cirkel heeft geklikt, wordt deze cirkel verwijderd uit de array circles. 
+	    Overloop alle cirkels uit de array circles.
+	    Als de afstand tussen het middelpunt van één rode cirkel en de coördinaten van de muisklik kleiner is dan of gelijk aan de straal, wil dit zeggen dat de gebruiker in een rode cirkel heeft geklikt. In dat geval wordt deze cirkel verwijderd uit de array circles. Maak hiervoor gebruik van de JavaScript functie splice en wordt het numberOfRedBalls met 1 verminderd.
+	    Om de afstand tussen 2 punten (x_1,y_1 ) en (x_2,y_2) te berekenen, maken we gebruik van de formule √((x_2- x_1 )* (x_2- x_1 )+ (y_2- y_1 )* (y_2- y_1 ) ) met (x_1,y_1 ) de coördinaten van de klik op het canvas en (x_2,y_2) het middelpunt van de cirkel. 
+	    - checkEndGame: return true als alle rode ballen veerwijderd zijn, in het andere geval false.
+	    
+De code in JavaScript om de afstand tussen middelpunt van cirkel en klik op canvas te bepalen is: 
 
+	const distance = Math.sqrt(Math.pow((this.circles[i].x - x), 2) + Math.pow((this.circles[i].y - y), 2)).
+
+- DPDIApp heeft:
+	- een canvas om te tekenen (code gegeven)
+	- een game object
+	- een timer object
+	- een storage object
+	- methods:
+		- drawGame en drawCircles: tekenen het spel op het canvas (code volledig gegeven)
+		- showNumberOfRedBalls: toont het aantal resterende rode cirkels op de webpagina (zie screenshot hierboven)
+		- startChronometer: een timer wordt gestart zodat na elke seconde de methode showTime wordt uitgevoerd. Een timer starten kan adhv de methode window.setInterval(function, aantalmilliseconden). De function is de methode die wordt uitgevoerd telkens als er aantalmilliseconden verstreken zijn.
+		- stopChronometer: een timer kan je stoppen via de methode window.clearInterval(deTimer) - deTimer bevat een verwijzing naar de timer die gestopt dient te worden.
+		- checkClick(x,y): roept de methode checkClick van het game object aan - x en y zijn de coördinaten waar op het canvas geklikt werd (later hier meer over)
+		- showTime: toont de verlopen tijd (sinds start van chronometer) op de webpagina (maak gebruik van de algemen functie convertSeconds - code gegeven) om de tijd in mm:ss weer te geven.
+		- getTimeRecordFromStorage en setTimeRecordInStorage halen respectievelijk de recordtijd op uit de storage of schrijft deze weg naar de storage.
+		- showRecordTime: toont de recordTijd op de webpagina (code gegeven)
+		- checkEndGame: ga het einde van het spel na (code gegeven)
+		- stopGame: stopt de chronometer, toont recordTijd op de webpagina en slaat eventueel de nieuwe recordtijd op in storage, zorgt ervoor dat er niets meer gebeurt als op het canvas geklikt wordt.
+
+De init functie - initialisatie van de applicatie:
+- haalt het canvas op (code gegeven).
+- maakt een DPDIApp object aan met 2 parameters: canvas object en storage object
+- zorg ervoor dat als er op het canvas geklikt wordt:
+	- gecheckt wordt of er een op een rode bol geklikt is. Hiervoor geeft je de x en y coördinaat van de klik op het canvas door aan de gepaste methode. 
+	- het spel hertekend wordt op het canvas
+	- geckeckt wordt of het spel ten einde is.
+
+Volgende code gebruikt worden om de x en y coordinaat van het klikken op het canvas te bepalen:
+	
+	// xco is de xcoördinaat van de muisklik op het canvas
+	const xco = event.pageX - DPDI.canvas.offsetLeft;
+	// yco is de xcoördinaat van de muisklik op het canvas
+	const yco = event.pageY - DPDI.canvas.offsetTop;
+
+
+	
