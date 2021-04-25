@@ -1,3 +1,1 @@
-﻿import {
-	countriesOfEurope
-} from './countries.js';
+﻿import {countriesOfEurope} from './countries.js';
