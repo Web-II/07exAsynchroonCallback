@@ -64,11 +64,11 @@ De quiz.js bevat naast de import ook een Class Country met de gepaste getters. D
 Er is ook een Class Quiz. Deze bevat een collection van Country Objecten (map de JSON objecten uit de landen van Europa),
 een collection van vragen (bevat 10 verschillende Country objecten) en tot slot een collection met antwoorden, deze bevat de vraag (Country object) en het antwoord van de quizzer.
 
-Implementeer de methodes van de Quiz klasse.
-createQuestions() : genereert random 10 vragen (Country object).
-getQuestion(): retourneert de volgende vraag (geen gebruik maken van idiote tellerkes). Denk na hoe je kan weten wate de volgende vraag is...
-addAnswer(question, answer): voegt het antwoord toe aan de collection van antwoorden. Tip: key is de vraag en value is het antwoord.
-getRandomCountryName(): retourneert random een countryname ui de collection van Country objecten.
+Implementeer de methodes van de Quiz klasse.     
+- createQuestions() : genereert random 10 vragen (Country object).   
+- getQuestion(): retourneert de volgende vraag (geen gebruik maken van idiote tellerkes). Denk na hoe je kan weten wat de volgende vraag is...
+- addAnswer(question, answer): voegt het antwoord toe aan de collection van antwoorden. Tip: key is de vraag en value is het antwoord.
+- getRandomCountryName(): retourneert random een countryname uit de collection van Country objecten.
 
 Vervolgens is er nog de klasse QuizApp.
 
