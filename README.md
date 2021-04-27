@@ -51,7 +51,7 @@ Drie vragen beantwoord:
 
 De landen van Europa met hoofdstad en vlag staan in countries.js.
 
-Bekijk deze code: dit is een array van JSON objecten. Elk object bevat:
+Bekijk deze code: dit is een array van objecten. Elk object bevat:
 
 - een property name (naam van het land)
 - een property flag (url van de vlag): wordt in deze oefening niet gebruikt.
